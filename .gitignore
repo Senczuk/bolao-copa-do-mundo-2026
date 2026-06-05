@@ -31,8 +31,10 @@ dist-ssr
 .claude-flow/logs/
 .claude-flow/daemon-state.json
 .claude-flow/daemon.pid
+.claude-flow/agents/
 .claude-flow/metrics/*.json
 .claude-flow/swarm/
+.claude-flow/tasks/
 .swarm/
 
 # Environment variables

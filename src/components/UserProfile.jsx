@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { GOOGLE_SCRIPT_URL } from "../App";
+import { calculatePredictionProgress } from "../utils/predictionProgress";
 
 export default function UserProfile({ 
   profile, 
@@ -140,6 +141,14 @@ export default function UserProfile({
   };
 
   const syncStatus = getSyncStatus();
+  const progress = calculatePredictionProgress(predictions);
+  const nextStep = !profile.name.trim()
+    ? "Preencha seu nome completo para identificar seus palpites."
+    : profile.phone.replace(/\D/g, "").length < 10
+      ? "Informe seu WhatsApp com DDD para liberar envio e recuperação."
+      : !progress.isComplete
+        ? "Complete os placares e chaves restantes. Você já pode salvar rascunho ou baixar backup."
+        : "Tudo preenchido. Envie online e avise o grupo no WhatsApp.";
 
   return (
     <section className="profile-section card">
@@ -178,13 +187,31 @@ export default function UserProfile({
         </div>
       )}
 
+      <div className="mobile-flow-panel">
+        <div className="flow-summary">
+          <div>
+            <span className="flow-eyebrow">Progresso dos palpites</span>
+            <strong>{progress.completed}/{progress.total}</strong>
+          </div>
+          <span className="flow-percent">{progress.percent}%</span>
+        </div>
+        <div className="flow-progress-bar" aria-hidden="true">
+          <span style={{ width: `${progress.percent}%` }} />
+        </div>
+        <div className="flow-split">
+          <span>Grupos: {progress.groupCompleted}/{progress.groupTotal}</span>
+          <span>Mata-mata: {progress.knockoutCompleted}/{progress.knockoutTotal}</span>
+        </div>
+        <p className="flow-next-step">{nextStep}</p>
+      </div>
+
       {/* Opção de Recuperar Palpites do Banco de Dados */}
       {GOOGLE_SCRIPT_URL && (
-        <div className="recovery-section" style={{ marginTop: "15px", borderTop: "1px solid var(--border-glass)", paddingTop: "15px", marginBottom: "15px" }}>
-          <label style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "1px" }}>
+        <div className="recovery-section">
+          <label className="recovery-label">
             🔍 Já enviou seus palpites? Busque-os aqui pelo número:
           </label>
-          <div style={{ display: "flex", gap: "10px", marginTop: "8px" }}>
+          <div className="recovery-controls">
             <input 
               type="text" 
               placeholder="Digite o celular para recuperar palpites..." 
@@ -201,21 +228,10 @@ export default function UserProfile({
                 }
                 setRecoveryPhone(value);
               }}
-              style={{
-                background: "rgba(0, 0, 0, 0.2)",
-                border: "1px solid var(--border-glass)",
-                borderRadius: "12px",
-                padding: "10px 16px",
-                color: "#fff",
-                fontSize: "0.95rem",
-                flex: "1",
-                outline: "none"
-              }}
             />
             <button 
               className="btn btn-secondary" 
               onClick={() => onLoadByPhone(recoveryPhone)}
-              style={{ padding: "10px 20px" }}
             >
               Buscar Palpites
             </button>
@@ -224,30 +240,37 @@ export default function UserProfile({
       )}
 
       <div className="profile-actions">
-        {GOOGLE_SCRIPT_URL && (
-          <button 
-            className="btn btn-primary" 
-            onClick={onSubmitOnline}
-            disabled={submittingOnline}
-          >
-            {submittingOnline ? "⏳ Enviando..." : "🚀 Enviar Palpites Online"}
+        <div className="action-group action-group-primary">
+          {GOOGLE_SCRIPT_URL && (
+            <button 
+              className="btn btn-primary" 
+              onClick={onSubmitOnline}
+              disabled={submittingOnline}
+            >
+              {submittingOnline ? "⏳ Enviando..." : "🚀 Enviar Palpites Online"}
+            </button>
+          )}
+          <button className="btn btn-whatsapp" onClick={handleWhatsAppShare}>
+            💬 Avisar no WhatsApp
           </button>
-        )}
-        <button className="btn btn-secondary" onClick={onSaveLocal}>
-          💾 Salvar Rascunho
-        </button>
-        <button 
-          className={`btn btn-outline ${isComplete ? "" : "btn-warning"}`} 
-          onClick={onExportJSON}
-        >
-          📤 Baixar JSON (Backup)
-        </button>
-        <button 
-          className="btn btn-outline" 
-          onClick={() => document.getElementById("user-json-upload").click()}
-        >
-          📥 Importar/Restaurar JSON
-        </button>
+        </div>
+        <div className="action-group action-group-backup">
+          <button className="btn btn-secondary" onClick={onSaveLocal}>
+            💾 Salvar Rascunho
+          </button>
+          <button 
+            className={`btn btn-outline ${isComplete ? "" : "btn-warning"}`} 
+            onClick={onExportJSON}
+          >
+            📤 Baixar JSON (Backup)
+          </button>
+          <button 
+            className="btn btn-outline" 
+            onClick={() => document.getElementById("user-json-upload").click()}
+          >
+            📥 Importar/Restaurar JSON
+          </button>
+        </div>
         <input 
           type="file" 
           id="user-json-upload" 
@@ -255,12 +278,11 @@ export default function UserProfile({
           onChange={handleImportJSON} 
           style={{ display: "none" }} 
         />
-        <button className="btn btn-whatsapp" onClick={handleWhatsAppShare}>
-          💬 Avisar no WhatsApp
-        </button>
-        <button className="btn btn-danger btn-sm" onClick={onClearData}>
-          🗑️ Limpar
-        </button>
+        <div className="action-group action-group-danger">
+          <button className="btn btn-danger btn-sm" onClick={onClearData}>
+            🗑️ Limpar
+          </button>
+        </div>
       </div>
 
       {!isComplete && (

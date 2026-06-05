@@ -342,8 +342,275 @@ body {
 
 .profile-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
+}
+
+.mobile-flow-panel {
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 18px;
+}
+
+.flow-summary,
+.flow-split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.flow-eyebrow {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flow-summary strong {
+  display: block;
+  font-size: 1.35rem;
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+
+.flow-percent {
+  min-width: 58px;
+  text-align: center;
+  color: #000;
+  background: var(--accent-green);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.flow-progress-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 12px 0 10px;
+}
+
+.flow-progress-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-green));
+  border-radius: inherit;
+  transition: width var(--transition-normal);
+}
+
+.flow-split {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+.flow-next-step {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.recovery-section {
+  margin-top: 15px;
+  border-top: 1px solid var(--border-glass);
+  padding-top: 15px;
+  margin-bottom: 15px;
+}
+
+.recovery-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.recovery-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.recovery-controls input {
+  flex: 1;
+  min-width: 0;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 10px 16px;
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.action-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.action-group-primary .btn {
+  flex: 1 1 220px;
+}
+
+.action-group-backup .btn {
+  flex: 1 1 180px;
+}
+
+.action-group-danger {
+  justify-content: flex-end;
+}
+
+@media (max-width: 760px) {
+  .app-container {
+    padding: 0 12px;
+  }
+
+  .app-header {
+    padding: 20px 0 12px;
+  }
+
+  .header-title {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .grupera-logo {
+    font-size: 1.5rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .header-nav {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    border-radius: 16px;
+    padding: 6px;
+    scrollbar-width: none;
+  }
+
+  .header-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-btn {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    min-height: 44px;
+  }
+
+  .card {
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 18px;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+    align-items: flex-start;
+  }
+
+  .section-description {
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+  }
+
+  .recovery-controls,
+  .action-group,
+  .profile-actions {
+    flex-direction: column;
+  }
+
+  .btn,
+  .recovery-controls input {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .action-group-danger {
+    align-items: stretch;
+  }
+
+  .flow-split {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .group-grid,
+  .group-matches-col,
+  .standings-col,
+  .matches-list,
+  .match-card,
+  .match-info,
+  .match-teams-input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .group-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .match-card {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .match-info {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .match-details {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .match-teams-input {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .team-row {
+    min-width: 0;
+    gap: 6px;
+    font-size: 0.85rem;
+  }
+
+  .team-name {
+    max-width: 100%;
+  }
+
+  .team-flag,
+  .flag-img {
+    flex: 0 0 auto;
+  }
+
+  .score-inputs {
+    flex-shrink: 0;
+    padding: 4px 6px;
+  }
+
+  .score-input {
+    width: 38px;
+    height: 38px;
+    font-size: 1.05rem;
+  }
 }
 
 /* --- TABS DO SELETOR DE GRUPOS --- */
