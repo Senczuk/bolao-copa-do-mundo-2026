@@ -733,6 +733,10 @@ body {
   gap: 10px;
 }
 
+.mobile-match-editor {
+  display: none;
+}
+
 .team-row {
   display: flex;
   align-items: center;
@@ -1877,4 +1881,499 @@ body {
 .outcome-none {
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-muted);
+}
+
+/* --- MOBILE UX AUDIT PASS: compactacao e leitura --- */
+@media (max-width: 760px) {
+  body {
+    padding-bottom: 24px;
+  }
+
+  .app-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 10px;
+    overflow-x: clip;
+  }
+
+  .app-header {
+    padding: 16px 0 10px;
+  }
+
+  .copa-badge {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .header-title {
+    font-size: 1.55rem;
+    line-height: 1.05;
+    gap: 4px;
+  }
+
+  .grupera-logo {
+    font-size: 1.05rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.78rem;
+    margin-top: 2px;
+  }
+
+  .header-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    border-radius: 14px;
+    gap: 6px;
+    padding: 5px;
+    scrollbar-width: none;
+  }
+
+  .header-nav::-webkit-scrollbar,
+  .group-selector::-webkit-scrollbar,
+  .stage-selector::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-btn {
+    flex: 0 0 auto;
+    min-height: 38px;
+    padding: 8px 12px;
+    font-size: 0.78rem;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+
+  .card {
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: 1rem;
+    line-height: 1.15;
+    margin-bottom: 5px;
+  }
+
+  .section-description {
+    font-size: 0.78rem;
+    line-height: 1.35;
+    margin-bottom: 12px;
+  }
+
+  .profile-inputs {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .input-group {
+    gap: 5px;
+  }
+
+  .input-group label {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
+
+  .input-group input,
+  .recovery-controls input {
+    min-height: 40px;
+    padding: 9px 11px;
+    border-radius: 9px;
+    font-size: 0.88rem;
+  }
+
+  .sync-status-badge {
+    margin-bottom: 10px !important;
+    padding: 8px 10px;
+    font-size: 0.76rem;
+    line-height: 1.25;
+    border-radius: 9px;
+  }
+
+  .mobile-flow-panel {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+  .flow-summary strong {
+    font-size: 1.05rem;
+  }
+
+  .flow-eyebrow {
+    font-size: 0.62rem;
+  }
+
+  .flow-percent {
+    min-width: 48px;
+    padding: 4px 8px;
+    font-size: 0.78rem;
+  }
+
+  .flow-progress-bar {
+    height: 6px;
+    margin: 8px 0;
+  }
+
+  .flow-split,
+  .flow-next-step {
+    font-size: 0.74rem;
+    line-height: 1.25;
+  }
+
+  .recovery-section {
+    margin: 8px 0 10px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-glass);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  .recovery-summary {
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    list-style-position: inside;
+  }
+
+  .recovery-section[open] .recovery-summary {
+    margin-bottom: 8px;
+  }
+
+  .recovery-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+
+  .recovery-controls {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  .profile-actions {
+    gap: 8px;
+  }
+
+  .action-group {
+    display: grid;
+    gap: 8px;
+  }
+
+  .action-group-primary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .action-group-backup {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .action-group-danger {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn,
+  .action-group .btn {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 8px;
+    border-radius: 9px;
+    font-size: 0.76rem;
+    line-height: 1.1;
+    white-space: normal;
+  }
+
+  .action-btn-main {
+    font-size: 0.8rem;
+    min-height: 42px;
+  }
+
+  .action-btn-secondary {
+    font-size: 0.7rem;
+  }
+
+  .action-group-danger .btn {
+    width: auto;
+    min-height: 32px;
+    padding: 6px 12px;
+  }
+
+  .warning-text {
+    margin-top: 10px;
+    padding: 8px 10px;
+    font-size: 0.72rem;
+    line-height: 1.25;
+  }
+
+  .group-selector {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 6px;
+    margin: 8px -2px 14px;
+    padding: 0 2px 4px;
+    scrollbar-width: none;
+  }
+
+  .group-tab-btn {
+    flex: 0 0 42px;
+    min-width: 42px;
+    padding: 6px 4px;
+    border-radius: 10px;
+    gap: 2px;
+  }
+
+  .group-letter {
+    font-size: 0.95rem;
+  }
+
+  .group-progress-badge {
+    font-size: 0.58rem;
+    padding: 1px 5px;
+  }
+
+  .group-grid,
+  .group-matches-col,
+  .group-standings-col,
+  .matches-list,
+  .match-card,
+  .match-info,
+  .match-teams-input,
+  .knockout-grid,
+  .knockout-card,
+  .knockout-match-row {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .group-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .column-title {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    padding-left: 8px;
+  }
+
+  .matches-list {
+    gap: 8px;
+  }
+
+  .match-card {
+    padding: 10px;
+    gap: 8px;
+    border-radius: 11px;
+  }
+
+  .match-info {
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 0.66rem;
+    line-height: 1.2;
+  }
+
+  .match-round {
+    padding: 2px 6px;
+  }
+
+  .match-details {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .match-teams-input {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 6px;
+    align-items: center;
+  }
+
+  .team-row {
+    min-width: 0;
+    gap: 5px;
+    font-size: 0.78rem;
+    line-height: 1.12;
+  }
+
+  .left-team {
+    justify-content: flex-end;
+  }
+
+  .right-team {
+    justify-content: flex-start;
+  }
+
+  .team-name,
+  .knockout-team .team-name {
+    max-width: 100% !important;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .team-flag,
+  .flag-img {
+    flex: 0 0 auto;
+  }
+
+  .score-inputs,
+  .knockout-score-inputs {
+    flex-shrink: 0;
+    gap: 4px;
+    padding: 3px 5px;
+    border-radius: 8px;
+  }
+
+  .score-input {
+    width: 34px;
+    height: 34px;
+    border-radius: 7px;
+    font-size: 0.95rem;
+  }
+
+  .desktop-match-editor {
+    display: none !important;
+  }
+
+  .mobile-match-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .mobile-team-score-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 38px;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .mobile-team-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  .mobile-team-name span:last-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .mobile-team-score-row .score-input {
+    width: 38px;
+    height: 34px;
+  }
+
+  .table-responsive {
+    border-radius: 10px;
+  }
+
+  .standings-table {
+    font-size: 0.72rem;
+  }
+
+  .standings-table th,
+  .standings-table td {
+    padding: 8px 5px;
+  }
+
+  .standings-table .team-col {
+    min-width: 120px;
+  }
+
+  .stage-selector {
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 4px;
+    margin-bottom: 12px;
+    scrollbar-width: none;
+  }
+
+  .stage-btn {
+    flex: 0 0 auto;
+    min-width: 112px;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .stage-title {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+
+  .knockout-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .knockout-card {
+    padding: 10px;
+    gap: 8px;
+    border-radius: 11px;
+  }
+
+  .knockout-match-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+  }
+
+  .knockout-match-row {
+    gap: 6px;
+  }
+
+  .knockout-team {
+    gap: 5px;
+    font-size: 0.74rem;
+    line-height: 1.12;
+  }
+
+  .penalty-box {
+    padding: 7px;
+    gap: 6px;
+    align-items: stretch;
+  }
+
+  .penalty-label {
+    font-size: 0.68rem;
+    text-align: center;
+  }
+
+  .penalty-selectors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .penalty-selectors .btn {
+    min-height: 32px;
+    padding: 5px 6px;
+    font-size: 0.65rem;
+  }
 }

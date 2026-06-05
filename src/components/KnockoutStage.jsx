@@ -109,7 +109,7 @@ export default function KnockoutStage({ r32Matchups, predictions, setPredictions
             <div key={match.id} className={`knockout-card ${hasTeams ? "" : "disabled-match"}`}>
               <div className="knockout-match-label">{match.label}</div>
               
-              <div className="knockout-match-row">
+              <div className="knockout-match-row desktop-match-editor">
                 {/* Time 1 */}
                 <div className="knockout-team">
                   <Flag teamName={match.team1} />
@@ -144,6 +144,39 @@ export default function KnockoutStage({ r32Matchups, predictions, setPredictions
                   <span className="team-name" title={match.team2}>{match.team2 || "A definir"}</span>
                   <Flag teamName={match.team2} />
                 </div>
+              </div>
+
+              <div className="mobile-match-editor mobile-knockout-editor">
+                <label className="mobile-team-score-row">
+                  <span className="mobile-team-name">
+                    <Flag teamName={match.team1} />
+                    <span>{match.team1 || "A definir"}</span>
+                  </span>
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="-"
+                    disabled={!hasTeams}
+                    className="score-input"
+                    value={pred.score1 !== undefined ? pred.score1 : ""}
+                    onChange={(e) => handleScoreChange(match.id, "score1", e.target.value)}
+                  />
+                </label>
+                <label className="mobile-team-score-row">
+                  <span className="mobile-team-name">
+                    <Flag teamName={match.team2} />
+                    <span>{match.team2 || "A definir"}</span>
+                  </span>
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="-"
+                    disabled={!hasTeams}
+                    className="score-input"
+                    value={pred.score2 !== undefined ? pred.score2 : ""}
+                    onChange={(e) => handleScoreChange(match.id, "score2", e.target.value)}
+                  />
+                </label>
               </div>
 
               {/* Decisão por pênaltis (se houver empate) */}

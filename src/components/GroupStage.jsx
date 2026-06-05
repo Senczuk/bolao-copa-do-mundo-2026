@@ -84,7 +84,7 @@ export default function GroupStage({ matches, predictions, setPredictions }) {
                     <span className="match-details">{match.date} às {match.time} · {match.stadium}</span>
                   </div>
 
-                  <div className="match-teams-input">
+                  <div className="match-teams-input desktop-match-editor">
                     {/* Time 1 */}
                     <div className="team-row left-team">
                       <Flag teamName={match.team1} />
@@ -116,6 +116,37 @@ export default function GroupStage({ matches, predictions, setPredictions }) {
                       <span className="team-name">{match.team2}</span>
                       <Flag teamName={match.team2} />
                     </div>
+                  </div>
+
+                  <div className="mobile-match-editor">
+                    <label className="mobile-team-score-row">
+                      <span className="mobile-team-name">
+                        <Flag teamName={match.team1} />
+                        <span>{match.team1}</span>
+                      </span>
+                      <input
+                        type="number"
+                        min="0"
+                        placeholder="-"
+                        className="score-input"
+                        value={pred.score1 !== undefined ? pred.score1 : ""}
+                        onChange={(e) => handleScoreChange(match.id, "score1", e.target.value)}
+                      />
+                    </label>
+                    <label className="mobile-team-score-row">
+                      <span className="mobile-team-name">
+                        <Flag teamName={match.team2} />
+                        <span>{match.team2}</span>
+                      </span>
+                      <input
+                        type="number"
+                        min="0"
+                        placeholder="-"
+                        className="score-input"
+                        value={pred.score2 !== undefined ? pred.score2 : ""}
+                        onChange={(e) => handleScoreChange(match.id, "score2", e.target.value)}
+                      />
+                    </label>
                   </div>
                 </div>
               );

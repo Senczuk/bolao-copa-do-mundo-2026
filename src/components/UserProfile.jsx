@@ -207,13 +207,17 @@ export default function UserProfile({
 
       {/* Opção de Recuperar Palpites do Banco de Dados */}
       {GOOGLE_SCRIPT_URL && (
-        <div className="recovery-section">
-          <label className="recovery-label">
-            🔍 Já enviou seus palpites? Busque-os aqui pelo número:
+        <details className="recovery-section">
+          <summary className="recovery-summary">
+            🔍 Recuperar palpites já enviados
+          </summary>
+          <label className="recovery-label" htmlFor="recovery-phone">
+            Busque pelo WhatsApp cadastrado:
           </label>
           <div className="recovery-controls">
             <input 
               type="text" 
+              id="recovery-phone"
               placeholder="Digite o celular para recuperar palpites..." 
               value={recoveryPhone}
               onChange={(e) => {
@@ -236,39 +240,39 @@ export default function UserProfile({
               Buscar Palpites
             </button>
           </div>
-        </div>
+        </details>
       )}
 
       <div className="profile-actions">
         <div className="action-group action-group-primary">
           {GOOGLE_SCRIPT_URL && (
             <button 
-              className="btn btn-primary" 
+              className="btn btn-primary action-btn-main"
               onClick={onSubmitOnline}
               disabled={submittingOnline}
             >
-              {submittingOnline ? "⏳ Enviando..." : "🚀 Enviar Palpites Online"}
+              {submittingOnline ? "⏳ Enviando..." : "🚀 Enviar Online"}
             </button>
           )}
-          <button className="btn btn-whatsapp" onClick={handleWhatsAppShare}>
-            💬 Avisar no WhatsApp
+          <button className="btn btn-whatsapp action-btn-main" onClick={handleWhatsAppShare}>
+            💬 WhatsApp
           </button>
         </div>
         <div className="action-group action-group-backup">
-          <button className="btn btn-secondary" onClick={onSaveLocal}>
-            💾 Salvar Rascunho
+          <button className="btn btn-secondary action-btn-secondary" onClick={onSaveLocal}>
+            💾 Rascunho
           </button>
           <button 
-            className={`btn btn-outline ${isComplete ? "" : "btn-warning"}`} 
+            className={`btn btn-outline action-btn-secondary ${isComplete ? "" : "btn-warning"}`}
             onClick={onExportJSON}
           >
-            📤 Baixar JSON (Backup)
+            📤 Backup
           </button>
           <button 
-            className="btn btn-outline" 
+            className="btn btn-outline action-btn-secondary"
             onClick={() => document.getElementById("user-json-upload").click()}
           >
-            📥 Importar/Restaurar JSON
+            📥 Importar
           </button>
         </div>
         <input 
