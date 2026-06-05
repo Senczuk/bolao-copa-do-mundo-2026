@@ -1140,6 +1140,13 @@ body {
   margin-bottom: 15px;
 }
 
+.rules-note {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent-gold);
+  background: rgba(251, 191, 36, 0.06);
+}
+
 .rules-list {
   list-style: none;
   display: flex;

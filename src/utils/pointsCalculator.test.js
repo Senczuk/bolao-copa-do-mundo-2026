@@ -18,6 +18,11 @@ describe("calculateMatchPoints", () => {
     expect(calculateMatchPoints(1, 2, 1, 0)).toBe(5);
   });
 
+  it("does not accumulate criteria within the same match", () => {
+    expect(calculateMatchPoints(2, 1, 2, 1)).toBe(25);
+    expect(calculateMatchPoints(2, 1, 2, 3)).toBe(5);
+  });
+
   it("handles draws with the same rule tiers", () => {
     expect(calculateMatchPoints("1", "1", "2", "2")).toBe(15);
   });

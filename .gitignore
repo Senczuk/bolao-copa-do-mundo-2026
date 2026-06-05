@@ -29,6 +29,10 @@ dist-ssr
 # Claude Flow runtime data
 .claude-flow/data/
 .claude-flow/logs/
+.claude-flow/daemon-state.json
+.claude-flow/daemon.pid
+.claude-flow/metrics/*.json
+.claude-flow/swarm/
 .swarm/
 
 # Environment variables

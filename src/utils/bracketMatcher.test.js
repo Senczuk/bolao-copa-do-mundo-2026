@@ -48,4 +48,12 @@ describe("getKnockoutStages", () => {
 
     expect(stages.r16Matchups[0].team1).toBe("");
   });
+
+  it("uses penalties only to advance tied knockout matches", () => {
+    const stages = getKnockoutStages(makeRoundOf32(), {
+      R32_1: { score1: 1, score2: 1, penaltyWinner: "T2" }
+    });
+
+    expect(stages.r16Matchups[0].team1).toBe("T2");
+  });
 });

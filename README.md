@@ -67,27 +67,37 @@ Para habilitar o salvamento e o ranking online:
 
 ---
 
-## 📜 Critérios de Pontuação e Desempate
+## 📜 Regulamento & Pontuação
 
-### Pontuação por Jogo
-*   **Placar Exato (25 pontos):** Acerto exato do resultado (ex: previu 2x1, terminou 2x1).
-*   **Vencedor + Saldo (15 pontos):** Acerto de quem venceu e a diferença de gols (ex: previu 3x1, terminou 2x0).
-*   **Apenas Vencedor (10 pontos):** Acerto apenas de quem ganharia/empataria o jogo (ex: previu 2x1, terminou 3x0).
-*   **Gol de uma Equipe (5 pontos):** Acerto de gols marcados por apenas uma das equipes (ex: previu 2x1, terminou 2x3).
+### Pontuação por Placar de Partida
+Válido para partidas da Fase de Grupos e do Mata-Mata.
 
-### Bônus de Classificação
-Pontos acumulados conforme as seleções palpitadas avançam nas fases reais da competição:
-*   **Rodada de 32:** +5 pontos por time correto.
-*   **Oitavas de Final:** +10 pontos por time correto.
-*   **Quartas de Final:** +15 pontos por time correto.
-*   **Semifinais:** +20 pontos por time correto.
-*   **Finalistas:** +30 pontos por time correto.
-*   **Terceiro Lugar 🥉:** +30 pontos.
-*   **Campeão do Mundo 🏆:** +50 pontos.
+A pontuação por partida não é cumulativa. Será considerada apenas a maior pontuação obtida em cada jogo.
 
-### Desempate nos Grupos
-Caso ocorra empate na classificação virtual da fase de grupos, aplicam-se:
-1. Pontos ganhos.
-2. Saldo de Gols (SG).
-3. Gols Pró (GP).
-4. Ordem Alfabética (Critério de desempate virtual).
+*   **25 pontos — Acerto de Placar Exato:** você previu 2x1 e o jogo terminou 2x1.
+*   **15 pontos — Acerto de Resultado + Saldo de Gols:** você acertou o vencedor ou o empate e também acertou a diferença de gols. Ex.: previu 3x1 e terminou 2x0; ou previu 1x1 e terminou 2x2.
+*   **10 pontos — Acerto de Resultado:** você acertou o vencedor ou o empate, mas errou o placar exato e o saldo de gols. Ex.: previu 2x1 e terminou 3x0.
+*   **5 pontos — Acerto de Gols de uma Equipe:** você errou o resultado da partida, mas acertou exatamente a quantidade de gols feita por uma das equipes. Ex.: previu 2x1 e terminou 2x3. Limite: máximo de 5 pontos por partida neste critério.
+
+Observação para o Mata-Mata: o placar considerado será o resultado da partida até o fim da prorrogação, sem contar a disputa de pênaltis. A classificação por pênaltis conta apenas para os bônus de progressão.
+
+### Bônus por Progressão no Mata-Mata
+Pontos extras por cada seleção prevista corretamente em cada fase:
+
+*   **16avos de Final — R32:** +5 pontos por seleção correta.
+*   **Oitavas de Final — R16:** +10 pontos por seleção correta.
+*   **Quartas de Final — QF:** +15 pontos por seleção correta.
+*   **Semifinais — SF:** +20 pontos por seleção correta.
+*   **Finalistas — FI:** +30 pontos por seleção correta.
+*   **Campeão do Mundo:** +50 pontos se acertar o campeão.
+*   **Terceiro Lugar:** +30 pontos se acertar a seleção que terminar em 3º lugar.
+
+Exemplo de Progressão: se você previu que o Brasil seria campeão e ele realmente vencer a Copa, você ganhará +5 por chegar ao R32, +10 por chegar às oitavas, +15 por chegar às quartas, +20 por chegar às semifinais, +30 por ser finalista e +50 por ser campeão. Total: 130 pontos acumulados pela campanha do Brasil.
+
+### Desempate de Grupos no Bolão
+Caso duas ou mais seleções empatem em pontos na classificação de um grupo dentro do sistema do bolão, aplicam-se os critérios abaixo, nesta ordem:
+
+1. Pontos totais no grupo
+2. Saldo de gols
+3. Gols pró
+4. Ordem alfabética, apenas para evitar empate travado no sistema virtual
